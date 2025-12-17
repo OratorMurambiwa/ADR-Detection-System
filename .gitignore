@@ -1,0 +1,33 @@
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+
+*.bin
+*.safetensors
+model.safetensors
+pytorch_model.bin
+
+# Data files
+*.csv
+*.tsv
+*.zip
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+
+.streamlit/
