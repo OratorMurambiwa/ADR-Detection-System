@@ -6,7 +6,6 @@ import pandas as pd
 from datetime import datetime
 import os
 
-# Page config
 st.set_page_config(
     page_title="ADR Detection System",
     page_icon="💊",
@@ -14,7 +13,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
 st.markdown("""
 <style>
     .main-header {
@@ -36,15 +34,13 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Cache model loading
+#model loading
 @st.cache_resource
 def load_model():
     """Load the trained federated model and tokenizer"""
     try:
-        # Path to your model directory
-        model_path = "."  # Current directory since files are at root
+        model_path = "."  
         
-        # Check if model files exist
         if not os.path.exists("config.json"):
             st.error("Model files not found. Please ensure config.json and model files are in the same directory as app.py")
             return None, None, None
@@ -197,7 +193,7 @@ with col2:
                     'confidence': result['confidence']
                 })
                 
-                # Display results
+                # results
                 if result['has_adr']:
                     st.error("**ADR DETECTED**")
                     st.markdown("Potential adverse drug reaction identified")
@@ -235,7 +231,7 @@ with col2:
                 # Progress bar for confidence
                 st.progress(result['confidence'])
                 
-                # Detailed probabilities
+                # probabilities
                 if show_probabilities:
                     st.divider()
                     st.markdown("**Probability Breakdown:**")
@@ -271,7 +267,7 @@ with col2:
     else:
         st.info("Enter a review and click 'Analyze Review' to see results")
 
-# Analysis History
+#History
 if 'history' in st.session_state and len(st.session_state.history) > 0:
     st.divider()
     st.subheader("Recent Analysis History")
